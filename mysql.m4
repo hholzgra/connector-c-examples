@@ -32,8 +32,7 @@ AC_DEFUN([WITH_MYSQL], [
  
     CFLAGS="$CFLAGS "`$MYSQL_CONFIG --cflags` 
 
-    LDFLAGS="$LDFLAGS "`$MYSQL_CONFIG --libmysqld-libs`
-    #LDFLAGS="$LDFLAGS "`$MYSQL_CONFIG --libs_r`" -lndbclient -lmystrings -lmysys"
+    LDFLAGS="$LDFLAGS "`$MYSQL_CONFIG --libs_r`
     
     AC_MSG_RESULT($MYSQL_CONFIG)
   fi
