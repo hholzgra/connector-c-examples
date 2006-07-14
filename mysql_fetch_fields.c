@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 MySQL AB
+/* Copyright (C) 2005, 2006 Hartmut Holzgraefe
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -66,28 +66,31 @@ int main(int argc, char **argv)
 					unsigned int i, num_fields = mysql_num_fields(result);
 
 					for (i = 0; i < num_fields; i++) {
-						printf("FIELD #%d\n", i);
-						printf("  %-20s %s\n", "Field name", fields[i].name);
-						printf("  %-20s %s\n", "Original name", fields[i].org_name);
-						printf("  %-20s %s\n", "From table", fields[i].table);
-						printf("  %-20s %s\n", "Original name", fields[i].org_table);
-						printf("  %-20s %s\n", "Database", fields[i].db);
-						printf("  %-20s %s\n", "Catalog", fields[i].catalog);
-						printf("  %-20s %s\n", "Default", fields[i].def);
-						printf("  %-20s %lu\n", "CREATE field length", fields[i].length);
-						printf("  %-20s %lu\n", "MAX field lengt", fields[i].max_length);
-						printf("  %-20s %u\n", "Field name length", fields[i].name_length);
-						printf("  %-20s %u\n", "Original name length", fields[i].org_name_length);
-						printf("  %-20s %u\n", "Table name length", fields[i].table_length);
-						printf("  %-20s %u\n", "Original name length", fields[i].org_table_length);
-						printf("  %-20s %u\n", "DB name length", fields[i].db_length);
-						printf("  %-20s %u\n", "Catalog name length", fields[i].catalog_length);
-						printf("  %-20s %u\n", "Default length", fields[i].def_length);
-						printf("  %-20s %d: %s\n", "Charset", fields[i].charsetnr, get_charset_name(fields[i].charsetnr));
-						printf("  %-20s %u\n", "Field type", fields[i].type);
-						printf("  %-20s %X\n", "Flags", fields[i].flags);
-						/* TODO: decimals */
-						printf("\n");
+					  printf("FIELD #%d\n", i);
+					  printf("  %-20s %s\n", "Field name", fields[i].name);
+#if MYSQL_VERSION_ID >= 40100
+					  printf("  %-20s %s\n", "Original name", fields[i].org_name);
+#endif
+					  printf("  %-20s %s\n", "From table", fields[i].table);
+					  printf("  %-20s %s\n", "Original name", fields[i].org_table);
+					  printf("  %-20s %s\n", "Database", fields[i].db);
+#if MYSQL_VERSION_ID >= 40100
+					  printf("  %-20s %s\n", "Catalog", fields[i].catalog);
+#endif
+					  printf("  %-20s %s\n", "Default", fields[i].def);
+					  printf("  %-20s %lu\n", "CREATE field length", fields[i].length);
+					  printf("  %-20s %lu\n", "MAX field lengt", fields[i].max_length);
+#if MYSQL_VERSION_ID >= 40100
+					  printf("  %-20s %u\n", "Field name length", fields[i].name_length);
+					  printf("  %-20s %u\n", "Original name length", fields[i].org_name_length);
+					  printf("  %-20s %u\n", "Table name length", fields[i].table_length);
+					  printf("  %-20s %u\n", "Original name length", fields[i].org_table_length);
+					  printf("  %-20s %u\n", "DB name length", fields[i].db_length);
+					  printf("  %-20s %u\n", "Catalog name length", fields[i].catalog_length);
+					  printf("  %-20s %u\n", "Default length", fields[i].def_length);
+#endif
+					  /* TODO: decimals */
+					  printf("\n");
 					}
 				}
 			}

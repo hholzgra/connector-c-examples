@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 MySQL AB
+/* Copyright (C) 2005, 2006 Hartmut Holzgraefe
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -67,14 +67,19 @@ int main(int argc, char **argv)
 	
 					printf("FIELD #%d\n", i);
 					printf("  %-20s %s\n", "Field name", field->name);
+#if MYSQL_VERSION_ID >= 40100
 					printf("  %-20s %s\n", "Original name", field->org_name);
+#endif
 					printf("  %-20s %s\n", "From table", field->table);
 					printf("  %-20s %s\n", "Original name", field->org_table);
 					printf("  %-20s %s\n", "Database", field->db);
+#if MYSQL_VERSION_ID >= 40100
 					printf("  %-20s %s\n", "Catalog", field->catalog);
+#endif
 					printf("  %-20s %s\n", "Default", field->def);
 					printf("  %-20s %lu\n", "CREATE field length", field->length);
 					printf("  %-20s %lu\n", "MAX field lengt", field->max_length);
+#if MYSQL_VERSION_ID >= 40100
 					printf("  %-20s %u\n", "Field name length", field->name_length);
 					printf("  %-20s %u\n", "Original name length", field->org_name_length);
 					printf("  %-20s %u\n", "Table name length", field->table_length);
@@ -82,6 +87,7 @@ int main(int argc, char **argv)
 					printf("  %-20s %u\n", "DB name length", field->db_length);
 					printf("  %-20s %u\n", "Catalog name length", field->catalog_length);
 					printf("  %-20s %u\n", "Default length", field->def_length);
+#endif
 					/* TODO: flags, decimals, charset, field type */
 					printf("\n");
 				}
