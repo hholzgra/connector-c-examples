@@ -46,5 +46,4 @@ bin_PROGRAMS =  mysql_change_user \
 		mysql_stmt_prepare \
 		mysql_store_result \
 		mysql_thread_id \
-		mysql_use_result \
-		mysql_sp_call 
+		mysql_use_result 
