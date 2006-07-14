@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 MySQL AB
+/* Copyright (C) 2005, 2006 Hartmut Holzgraefe
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
