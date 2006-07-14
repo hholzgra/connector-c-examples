@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 MySQL AB
+/* Copyright (C) 2005, 2006 Hartmut Holzgraefe
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@
 
 int main(int argc, char **argv) 
 {
+#if MYSQL_VERSION_ID >= 40100
 	MYSQL *mysql = NULL;
 
 	mysql = mysql_init(mysql);
@@ -52,6 +53,9 @@ int main(int argc, char **argv)
 
 	
 	mysql_close(mysql);
+#else
+	printf("mysql_get_server_version() is only available starting with MySQL 4.1.0\n");
+#endif
 
 	return EXIT_SUCCESS;
 }
