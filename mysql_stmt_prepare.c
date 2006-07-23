@@ -23,6 +23,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include <mysql.h>
 
@@ -67,7 +68,7 @@ int main(int argc, char **argv)
 				puts("Statement prepare OK!");
 			}
 			
-			mysql_stmt_close(stmt)) {
+			mysql_stmt_close(stmt);
 		}
 	}
 	
