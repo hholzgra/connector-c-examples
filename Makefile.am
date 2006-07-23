@@ -1,3 +1,9 @@
+AM_CFLAGS=@MYSQL_CFLAGS@
+
+AM_LDFLAGS=@MYSQL_LDFLAGS@
+
+AM_LIBS=@MYSQL_LIBS@
+
 bin_PROGRAMS =  mysql_change_user \
 		mysql_character_set_name \
 		mysql_close \
@@ -47,3 +53,4 @@ bin_PROGRAMS =  mysql_change_user \
 		mysql_store_result \
 		mysql_thread_id \
 		mysql_use_result 
+
