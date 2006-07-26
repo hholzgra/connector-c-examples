@@ -25,6 +25,8 @@
  * MySQL C client API examples: mysql_errno() 
 */
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 

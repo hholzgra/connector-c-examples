@@ -21,6 +21,8 @@
  * see also http://mysql.com/mysql_stmt_field_count
 */
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 

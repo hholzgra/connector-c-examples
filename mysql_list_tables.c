@@ -21,6 +21,8 @@
  * see also http://mysql.com/mysql_list_tables
 */
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 

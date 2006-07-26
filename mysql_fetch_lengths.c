@@ -21,6 +21,8 @@
  * see also http://mysql.com/mysql_fetch_lengths
 */
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 

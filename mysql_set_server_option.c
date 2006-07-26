@@ -21,6 +21,8 @@
  * see also http://mysql.com/mysql_set_server_option
 */
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 

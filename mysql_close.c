@@ -21,6 +21,8 @@
  * see also http://mysql.com/mysql_close
 */
 
+#include "config.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 
