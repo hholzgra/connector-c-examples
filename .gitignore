@@ -79,6 +79,7 @@ mysql_set_server_option
 mysql_shutdown
 mysql_sqlstate
 mysql_stat
+mysql_stmt_bind_result
 mysql_stmt_close
 mysql_stmt_execute
 mysql_stmt_field_count
