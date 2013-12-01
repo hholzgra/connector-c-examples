@@ -34,7 +34,8 @@
 
 int main(int argc, char **argv) 
 {
-  MYSQL *mysql = NULL, *con;
+  MYSQL *mysql = NULL;
+  MYSQL *con;
 
   mysql = mysql_init(mysql);
 

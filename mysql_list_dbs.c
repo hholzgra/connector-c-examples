@@ -55,8 +55,6 @@ int main(int argc, char **argv)
 			printf("Couldn't get db list: %s\n", mysql_error(mysql));
 		} else {
 			MYSQL_ROW row;
-			int i;
-			unsigned int num_fields = mysql_num_fields(result);
 			
 			while ((row = mysql_fetch_row(result))) {
 				puts(row[0]);

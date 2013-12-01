@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 							CLIENT_FOUND_ROWS /* connection flags */ )) {
 		puts("Connect failed\n");
 	} else {
-		printf("MySQL Proto Info: %lu\n", mysql_get_proto_info(mysql));
+		printf("MySQL Proto Info: %u\n", mysql_get_proto_info(mysql));
 	}
 
 	

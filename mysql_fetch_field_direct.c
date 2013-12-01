@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 					MYSQL_FIELD *field = mysql_fetch_field_direct(result, i);
 
 					if (!field) {
-						printf("Faild fetching field #%u: %s\n", mysql_error(mysql));
+					        printf("Faild fetching field #%u: %s\n", i, mysql_error(mysql));
 						break;
 					} 
 	

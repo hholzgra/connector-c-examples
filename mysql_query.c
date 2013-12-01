@@ -25,6 +25,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include <mysql.h>
 
@@ -36,9 +37,8 @@ static char *server_groups[] = {
 
 int main(int argc, char **argv) 
 {
-  MYSQL *mysql = NULL;
+  MYSQL *mysql;
   int i;
-  char query[256];
 
   if (mysql_server_init(argc, argv, server_groups)) {
 	fputs("server init failed", stderr);
@@ -47,15 +47,17 @@ int main(int argc, char **argv)
 
   mysql_thread_init(); 
   
-  MYSQL* handle = mysql_init(NULL); 
-   mysql_options(handle, MYSQL_READ_DEFAULT_GROUP, "libmysqld_client");
-   mysql_options(handle, MYSQL_OPT_USE_EMBEDDED_CONNECTION, NULL);  mysql_real_connect(handle, NULL, NULL, NULL, "test", 0, NULL, 0); 
-  for(i=0; 1; i++) 
+  mysql = mysql_init(NULL); 
+  mysql_options(mysql, MYSQL_READ_DEFAULT_GROUP, "libmysqld_client");
+  mysql_options(mysql, MYSQL_OPT_USE_EMBEDDED_CONNECTION, NULL);  
+  mysql_real_connect(mysql, NULL, NULL, NULL, "test", 0, NULL, 0); 
+
+  for(i = 0; i < 10; i++) 
   { 
 	printf("iteration %d\n", i); 
-	MYSQL_STMT* stmt = mysql_stmt_init(handle); 
+	MYSQL_STMT* stmt = mysql_stmt_init(mysql); 
 	char* command = "SELECT 1 FROM i1"; 
-//char* command = "UPDATE T1 SET i1 = 1"; 
+	//char* command = "UPDATE T1 SET i1 = 1"; 
 	mysql_stmt_prepare(stmt, command, strlen(command)); 
 	mysql_stmt_execute(stmt); 
  	mysql_stmt_store_result(stmt);
@@ -63,8 +65,9 @@ int main(int argc, char **argv)
 	mysql_stmt_free_result(stmt); 
 	mysql_stmt_close(stmt); 
   } 
-  mysql_close(handle); 
-  
+  mysql_close(mysql); 
+
+  return EXIT_SUCCESS; 
 } 
  
 

@@ -31,4 +31,6 @@
 int main(int argc, char **argv) 
 {
 	printf("MySQL Client Version %lu\n", mysql_get_client_version());
+
+	return EXIT_SUCCESS;
 }

@@ -57,7 +57,6 @@ int main(int argc, char **argv)
 			printf("Couldn't get field list: %s\n", mysql_error(mysql));
 		} else {
 			MYSQL_ROW row;
-			int i;
 			
 			while ((row = mysql_fetch_row(result))) {
 				puts(row[0]);

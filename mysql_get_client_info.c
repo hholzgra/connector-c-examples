@@ -31,4 +31,6 @@
 int main(int argc, char **argv) 
 {
 	printf("MySQL Client Info: %s\n", mysql_get_client_info());
+
+	return EXIT_SUCCESS;
 }
