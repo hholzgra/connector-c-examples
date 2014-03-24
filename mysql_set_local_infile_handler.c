@@ -69,7 +69,6 @@ int main(int argc, char **argv)
 {
   MYSQL *mysql = NULL;
   int opt_local_infile = 1; 
-  int client_flags = 0;
   int stat;
         
   mysql = mysql_init(mysql);
