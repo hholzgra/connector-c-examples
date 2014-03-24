@@ -8,7 +8,7 @@
 
 #define STRING_SIZE 50
 
-#define SELECT_SAMPLE "SELECT col1, col2, col3, col4 FROM test_table"
+#define SELECT_SAMPLE "SELECT col1, col2, col3, col4 FROM test_table WHERE !SLEEP(10)"
 
 int main(int argc, char **argv) {
   MYSQL_STMT    *stmt;
@@ -23,6 +23,8 @@ int main(int argc, char **argv) {
   my_bool       is_null[4];
   my_bool       error[4];
   MYSQL *mysql = NULL;
+  int j;
+  my_bool reconnect = 1;
 
   mysql = mysql_init(mysql);
   
@@ -31,11 +33,13 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
   
+  mysql_options(mysql, MYSQL_OPT_RECONNECT, &reconnect);
+
   if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
-			  "localhost", /* server hostname or IP address */ 
-			  "root",      /* mysql user */
-			  "",          /* password */
-			  "test",      /* default database to use, NULL for none */
+			  MYSQL_HOST,         /* server hostname or IP address */ 
+			  MYSQL_USER,         /* mysql user */
+			  MYSQL_PWD,          /* password */
+			  MYSQL_DB,           /* default database to use, NULL for none */
 			  0,           /* port number, 0 for default */
 			  NULL,        /* socket file or named pipe name */
 			  CLIENT_FOUND_ROWS /* connection flags */ )) {
@@ -43,6 +47,8 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
   
+  printf("connection id: %ld\n", mysql_thread_id(mysql));
+
   /* Prepare a SELECT query to fetch data from test_table */
   stmt = mysql_stmt_init(mysql);
   if (!stmt)
@@ -88,14 +94,6 @@ int main(int argc, char **argv) {
 	exit(0);
   }
 
-/* Execute the SELECT query */
-  if (mysql_stmt_execute(stmt))
-  {
-	fprintf(stderr, " mysql_stmt_execute(), failed\n");
-	fprintf(stderr, " %s\n", mysql_stmt_error(stmt));
-	exit(0);
-  }
-
 /* Bind the result buffers for all 4 columns before fetching them */
 
   memset(bind, 0, sizeof(bind));
@@ -136,6 +134,14 @@ int main(int argc, char **argv) {
 	fprintf(stderr, " %s\n", mysql_stmt_error(stmt));
 	exit(0);
   }
+
+for (j=0; j<3; j++) {
+/* Execute the SELECT query */
+  if (mysql_stmt_execute(stmt))
+  {
+	fprintf(stderr, " mysql_stmt_execute(), failed\n");
+	fprintf(stderr, " %s\n", mysql_stmt_error(stmt));
+  } else {
 
 /* Now buffer all results to client */
   if (mysql_stmt_store_result(stmt))
@@ -193,12 +199,15 @@ int main(int argc, char **argv) {
 	fprintf(stderr, " MySQL failed to return all rows\n");
 	exit(0);
   }
+  }
+}
 
 /* Free the prepared result metadata */
+ puts("freeing metadata\n");
   mysql_free_result(prepare_meta_result);
 
-
 /* Close the statement */
+  puts("closing statement\n");
   if (mysql_stmt_close(stmt))
   {
 	fprintf(stderr, " failed while closing the statement\n");
@@ -206,6 +215,8 @@ int main(int argc, char **argv) {
 	exit(0);
   }
 
+  printf("connection id: %ld\n", mysql_thread_id(mysql));
+  puts("closing connection\n");
   mysql_close(mysql);
 
   return EXIT_SUCCESS;

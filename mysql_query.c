@@ -50,7 +50,17 @@ int main(int argc, char **argv)
   mysql = mysql_init(NULL); 
   mysql_options(mysql, MYSQL_READ_DEFAULT_GROUP, "libmysqld_client");
   mysql_options(mysql, MYSQL_OPT_USE_EMBEDDED_CONNECTION, NULL);  
-  mysql_real_connect(mysql, NULL, NULL, NULL, "test", 0, NULL, 0); 
+ 
+  if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
+			  MYSQL_HOST,         /* server hostname or IP address */ 
+			  MYSQL_USER,         /* mysql user */
+			  MYSQL_PWD,          /* password */
+			  NULL,           /* default database to use, NULL for none */
+			  0,           /* port number, 0 for default */
+			  NULL,        /* socket file or named pipe name */
+			  CLIENT_FOUND_ROWS /* connection flags */ )) {
+    puts("Connect failed\n");
+  } else {		
 
   for(i = 0; i < 10; i++) 
   { 
@@ -65,8 +75,11 @@ int main(int argc, char **argv)
 	mysql_stmt_free_result(stmt); 
 	mysql_stmt_close(stmt); 
   } 
-  mysql_close(mysql); 
 
+  }
+
+  mysql_close(mysql); 
+  
   return EXIT_SUCCESS; 
 } 
  

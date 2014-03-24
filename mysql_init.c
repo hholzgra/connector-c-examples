@@ -36,6 +36,7 @@ int main(int argc, char **argv)
 
 	if (mysql) {
 		puts("INIT OK\n");
+		printf("flags: %lX\n", mysql->options.client_flag);
 		mysql_close(mysql);
 	} else {
 		puts("Init faild, out of memory?");

@@ -42,10 +42,10 @@ main (int argc, char **argv)
     }
 
   if (!mysql_real_connect (mysql,	/* MYSQL structure to use */
-			   "localhost",	/* server hostname or IP address */
-			   "root",	/* mysql user */
-			   "",	/* password */
-			   "test",	/* default database to use, NULL for none */
+			   MYSQL_HOST,         /* server hostname or IP address */ 
+			   MYSQL_USER,         /* mysql user */
+			   MYSQL_PWD,          /* password */
+			   NULL,               /* default database to use, NULL for none */
 			   0,	/* port number, 0 for default */
 			   NULL,	/* socket file or named pipe name */
 			   CLIENT_FOUND_ROWS /* connection flags */ ))
@@ -56,6 +56,8 @@ main (int argc, char **argv)
     {
       puts ("Connect OK\n");
     }
+
+  /* TODO example code missing */
 
   mysql_close (mysql);
 

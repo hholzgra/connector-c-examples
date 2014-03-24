@@ -40,17 +40,17 @@ int main(int argc, char **argv)
 	}
 	
 	if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
-							"127.0.0.1", /* server hostname or IP address */ 
-							"root",      /* mysql user */
-							"",          /* password */
-							"test",      /* default database to use, NULL for none */
+				MYSQL_HOST,         /* server hostname or IP address */ 
+				MYSQL_USER,         /* mysql user */
+				MYSQL_PWD,          /* password */
+				MYSQL_DB,           /* default database to use, NULL for none */
 							0,           /* port number, 0 for default */
 							NULL,        /* socket file or named pipe name */
 							CLIENT_FOUND_ROWS /* connection flags */ )) {
 		puts("Connect failed\n");
 	} else {		
 	  mysql_query(mysql, "SET NAMES utf8");
-	  if (mysql_query(mysql, "SELECT * FROM sakila.city LIMIT 1")) {
+	  if (mysql_query(mysql, "SELECT * FROM city LIMIT 1")) {
 		printf("Query failed: %s\n", mysql_error(mysql));
 	  } else {
 		MYSQL_RES *result = mysql_store_result(mysql);
