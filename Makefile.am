@@ -42,6 +42,7 @@ bin_PROGRAMS += mysql_real_connect
 bin_PROGRAMS += mysql_real_escape_string
 bin_PROGRAMS += mysql_real_query
 bin_PROGRAMS += mysql_select_db
+bin_PROGRAMS += mysql_set_local_infile_handler
 bin_PROGRAMS += mysql_set_server_option
 bin_PROGRAMS += mysql_shutdown
 bin_PROGRAMS += mysql_sqlstate
