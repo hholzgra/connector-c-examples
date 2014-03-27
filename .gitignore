@@ -47,6 +47,7 @@ mysql_character_set_name
 mysql_close
 mysql_create_db
 mysql_data_seek
+mysql_dump_debug_info
 mysql_errno
 mysql_error
 mysql_fetch_field

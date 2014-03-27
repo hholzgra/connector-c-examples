@@ -9,6 +9,7 @@ bin_PROGRAMS += mysql_change_user
 bin_PROGRAMS += mysql_character_set_name
 bin_PROGRAMS += mysql_close
 bin_PROGRAMS += mysql_create_db
+bin_PROGRAMS += mysql_dump_debug_info
 bin_PROGRAMS += mysql_data_seek
 bin_PROGRAMS += mysql_errno
 bin_PROGRAMS += mysql_error
