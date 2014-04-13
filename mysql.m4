@@ -37,6 +37,10 @@ AC_DEFUN([WITH_MYSQL], [
       then 
         MYSQL_CONFIG=$withval/bin/mysql_config
         MYSQL_PREFIX=$withval
+      elif test -x $withval/bin/mariadb_config -a -f $withval/bin/mariadb_config
+      then 
+        MYSQL_CONFIG=$withval/bin/mariadb_config
+        MYSQL_PREFIX=$withval
       fi
     fi
   ], [
@@ -51,6 +55,13 @@ AC_DEFUN([WITH_MYSQL], [
     elif test -x /usr/local/mysql/bin/mysql_config -a -f /usr/local/mysql/bin/mysql_config 
     then
       MYSQL_CONFIG=/usr/local/mysql/bin/mysql_config
+      MYSQL_PREFIX=/usr/local/mysql
+    elif MYSQL_CONFIG=`which mariadb_config` 
+    then      
+      MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
+    elif test -x /usr/local/mysql/bin/mariadb_config -a -f /usr/local/mysql/bin/mariadb_config 
+    then
+      MYSQL_CONFIG=/usr/local/mysql/bin/mariadb_config
       MYSQL_PREFIX=/usr/local/mysql
     fi
   ])
