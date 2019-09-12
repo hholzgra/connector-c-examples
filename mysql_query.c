@@ -80,6 +80,8 @@ int main(int argc, char **argv)
 
   mysql_close(mysql); 
   
+  mysql_library_end();
+  
   return EXIT_SUCCESS; 
 } 
  

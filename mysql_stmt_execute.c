@@ -1,4 +1,4 @@
-/* Copyright (C) 2005, 2006 Hartmut Holzgraefe
+/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,6 +33,11 @@ int main(int argc, char **argv)
 {
   MYSQL *mysql = NULL;
 
+  if (mysql_library_init(argc, argv, NULL)) {
+    fprintf(stderr, "could not initialize MySQL client library\n");
+    exit(1);
+  }
+ 
   mysql = mysql_init(mysql);
 
   if (!mysql) {
@@ -83,5 +88,7 @@ int main(int argc, char **argv)
         
   mysql_close(mysql);
 
+  mysql_library_end();
+  
   return EXIT_SUCCESS;
 }
