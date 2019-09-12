@@ -21,14 +21,12 @@ sudo apt-get install gcc make autoconf automake libtool libmariadb-dev zlib1g-de
 
 ### Build
 
-For now the database host, user name and password are compiled into the example binaries. To override the defaults ("localhost", user "root" without password) you need to pass in different values at the configuration step:
-
 ```sh
 # first generate the configure file
 ./autogen.sh
 
 # configure the build
-MYSQL_HOST=db.example.org MYSQL_USER=tester MYSQL_PWD=secret ./configure 
+./configure 
 
 # build
 make
@@ -36,7 +34,19 @@ make
 
 ### Run
 
-After `make` has finished successfully, you can run any of the result binaries without any extra parameters, e.g:
+Create a local `my.cnf` file with client connection information in the build directory:
+
+```
+[client]
+host=db.example.org
+user=tester
+password=secret
+database=test
+```
+
+With the access information in place you can run every example program without any
+further parameters, e.g.:
+
 
 ```sh
 $ ./mysql_store_result

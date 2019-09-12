@@ -85,11 +85,13 @@ int main(int argc, char **argv)
 
   mysql_options(mysql, MYSQL_OPT_LOCAL_INFILE, (char*) &opt_local_infile);
 
+  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
+
   if (!mysql_real_connect(mysql,              /* MYSQL structure to use */
-			  MYSQL_HOST,         /* server hostname or IP address */ 
-			  MYSQL_USER,         /* mysql user */
-			  MYSQL_PWD,          /* password */
-			  MYSQL_DB,           /* default database to use, NULL for none */
+			  NULL,         /* server hostname or IP address */ 
+			  NULL,         /* mysql user */
+			  NULL,          /* password */
+			  NULL,           /* default database to use, NULL for none */
 			  0,                  /* port number, 0 for default */
 			  NULL,               /* socket file or named pipe name */
 			  0                   /* client flags */

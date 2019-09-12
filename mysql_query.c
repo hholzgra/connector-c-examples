@@ -51,10 +51,12 @@ int main(int argc, char **argv)
   mysql_options(mysql, MYSQL_READ_DEFAULT_GROUP, "libmysqld_client");
   mysql_options(mysql, MYSQL_OPT_USE_EMBEDDED_CONNECTION, NULL);  
  
+  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
+
   if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
-                          MYSQL_HOST,         /* server hostname or IP address */ 
-                          MYSQL_USER,         /* mysql user */
-                          MYSQL_PWD,          /* password */
+                          NULL,         /* server hostname or IP address */ 
+                          NULL,         /* mysql user */
+                          NULL,          /* password */
                           NULL,           /* default database to use, NULL for none */
                           0,           /* port number, 0 for default */
                           NULL,        /* socket file or named pipe name */

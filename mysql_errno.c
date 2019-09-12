@@ -49,6 +49,8 @@ int main(int argc, char **argv)
     return EXIT_FAILURE;
   }
   
+  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
+
   con = mysql_real_connect(mysql,            /* MYSQL structure to use */
                            "nosuchhost",     /* server hostname or IP address */ 
                            "nosuchuser",     /* mysql user */
