@@ -41,6 +41,7 @@ ltmain.sh
 missing
 stamp-h1
 .deps
+_build
 
 # generated binaries
 mysql_change_user
