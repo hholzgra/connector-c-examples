@@ -1,2 +1,2 @@
 #!/bin/sh
-autoreconf --verbose --force --install --warnings=all
+autoreconf --verbose --install --warnings=all
