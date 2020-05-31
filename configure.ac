@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([api-examples], [1.0], [hartmut@php.net])
+AC_INIT([connector-c-examples], [1.0.1], [hartmut@php.net])
 AM_INIT_AUTOMAKE([1.11 tar-pax silent-rules -Wall -Werror])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_SILENT_RULES([yes])
