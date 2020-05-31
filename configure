@@ -641,8 +641,6 @@ MYSQL_LIBS
 MYSQL_LDFLAGS
 MYSQL_CXXFLAGS
 MYSQL_CFLAGS
-MYSQL_CLIENT_LIBS
-MYSQL_CLIENT_CFLAGS
 CPP
 LT_SYS_LIBRARY_PATH
 OTOOL64
@@ -771,8 +769,6 @@ with_gnu_ld
 with_sysroot
 enable_libtool_lock
 with_mysql
-with_mysql_config
-with_mysql_library
 enable_embedded_mysql
 '
       ac_precious_vars='build_alias
@@ -1439,9 +1435,6 @@ Optional Packages:
   --with-sysroot[=DIR]    Search for dependent libraries within DIR (or the
                           compiler's sysroot if not specified).
   --with-mysql=PATH       path to mysql_config binary or mysql prefix dir
-  --with-mysql-config=PATH
-                          A path to mysql_config script
-  --with-mysql-library    'client' or 'embedded'
 
 Some influential environment variables:
   CC          C compiler command
@@ -12003,16 +11996,6 @@ CC=$lt_save_CC
 
 
 
-
-# Check whether --with-mysql-config was given.
-if test "${with_mysql_config+set}" = set; then :
-  withval=$with_mysql_config; mysql_config="$withval"
-else
-  mysql_config=mysql_config
-fi
-
-
-
   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for mysql_config executable" >&5
 $as_echo_n "checking for mysql_config executable... " >&6; }
 
@@ -12055,6 +12038,9 @@ else
     elif MYSQL_CONFIG=`which mysql_config`
     then
       MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
+    elif MYSQL_CONFIG=`which mariadb_config`
+    then
+      MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
     elif test -x /usr/local/mysql/bin/mysql_config -a -f /usr/local/mysql/bin/mysql_config
     then
       MYSQL_CONFIG=/usr/local/mysql/bin/mysql_config
@@ -12091,45 +12077,7 @@ $as_echo "no" >&6; }
       MYSQL_CONFIG_INCLUDE=`$MYSQL_CONFIG --include`
       MYSQL_CONFIG_LIBS_R=`$MYSQL_CONFIG --libs_r`
 
-
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for MySQL" >&5
-$as_echo_n "checking for MySQL... " >&6; }
-
-
-# Check whether --with-mysql-library was given.
-if test "${with_mysql_library+set}" = set; then :
-  withval=$with_mysql_library; mysql_lib="$withval"
-else
-  mysql_lib=client
-fi
-
-
-    case "$mysql_lib" in
-      client) mysql_libs=--libs mysql_cflags=--cflags ;;
-      embedded) mysql_libs=--libmysqld-libs mysql_cflags=--cflags ;;
-      *) as_fn_error $? "Bad value for --with-mysql-library" "$LINENO" 5
-    esac
-
-
-
-    mysql_version=`$mysql_config --version`
-    if test -z "$mysql_version" ; then
-      as_fn_error $? "Cannot execute $mysql_config" "$LINENO" 5
-    fi
-
-
-
-    MYSQL_CLIENT_CFLAGS=`$mysql_config $mysql_cflags`
-    MYSQL_CLIENT_LIBS=`$mysql_config $mysql_libs`
-
-
-
-    # should we try to build a test program ?
-
-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: $mysql_version" >&5
-$as_echo "$mysql_version" >&6; }
-=`dirname $MYSQL_CONFIG`/mysql
+      MYSQL_CLIENT=`dirname $MYSQL_CONFIG`/mysql
 
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MYSQL_CONFIG" >&5
 $as_echo "$MYSQL_CONFIG" >&6; }

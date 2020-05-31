@@ -52,6 +52,9 @@ AC_DEFUN([WITH_MYSQL], [
     elif MYSQL_CONFIG=`which mysql_config` 
     then      
       MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
+    elif MYSQL_CONFIG=`which mariadb_config` 
+    then      
+      MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
     elif test -x /usr/local/mysql/bin/mysql_config -a -f /usr/local/mysql/bin/mysql_config 
     then
       MYSQL_CONFIG=/usr/local/mysql/bin/mysql_config
