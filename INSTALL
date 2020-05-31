@@ -15,8 +15,20 @@ E.g. on Ubuntu you need to install dependencies with:
 
   sudo apt-get install -y gcc make zlib1g-dev libssl-dev libmaridb-dev 
 
+When building from git you also need:
+
+  sudo apt-get install -y autoconf automake libtool
+
 If you want to build against MySQL instead of MariaDB, replace
 libmariadb-dev libmysqlclient-dev.
+
+On CentOS the following should work:
+
+  sudo yum install -y gcc make zlib-devel libssl-devel mariadb-devel
+
+When building from git you also need:
+
+  sudo yum install -y autoconf automake libtool
 
 Package names on other distributions may differ.
 
