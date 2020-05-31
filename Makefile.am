@@ -2,9 +2,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 AM_CFLAGS = @MYSQL_CFLAGS@ -Wall -Werror -Wno-unused-but-set-variable
 
-AM_LDFLAGS = @MYSQL_LDFLAGS@
-
-AM_LIBS = @MYSQL_LIBS@
+LIBS = @MYSQL_LIBS@
 
 bin_PROGRAMS =
 bin_PROGRAMS += mysql_change_user

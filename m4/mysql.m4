@@ -155,7 +155,7 @@ AC_DEFUN([MYSQL_SUBST], [
   # with contant by the other macros 
   AC_SUBST([MYSQL_CFLAGS])
   AC_SUBST([MYSQL_CXXFLAGS])
-  AC_SUBST([MYSQL_LDFLAGS])
+  AC_SUBST([MYSQL_LIBS])
   AC_SUBST([MYSQL_LIBS])
   AC_SUBST([MYSQL_VERSION])
   AC_SUBST([MYSQL_PLUGIN_DIR])
@@ -262,8 +262,8 @@ AC_DEFUN([MYSQL_USE_CLIENT_API], [
 
   # add linker flags for client lib
   AC_ARG_ENABLE([embedded-mysql], [  --enable-embedded-mysql enable the MySQL embedded server feature], 
-    [MYSQL_LDFLAGS="$MYSQL_LDFLAGS "$($MYSQL_CONFIG --libmysqld-libs)],
-    [MYSQL_LDFLAGS="$MYSQL_LDFLAGS $MYSQL_CONFIG_LIBS_R"])
+    [MYSQL_LIBS="$MYSQL_LIBS "$($MYSQL_CONFIG --libmysqld-libs)],
+    [MYSQL_LIBS="$MYSQL_LIBS $MYSQL_CONFIG_LIBS_R"])
 ])
 
 
@@ -321,11 +321,11 @@ AC_DEFUN([MYSQL_USE_NDB_API], [
     AC_LANG_PUSH(C++)
     OLD_LIBS=$LIBS
     LIBS="$LIBS $MYSQL_LIBS -lmysys -lmystrings"
-    OLD_LDFLAGS=$LDFLAGS
-    LDFLAGS="$LDFLAGS $MYSQL_LDFLAGS"
+    OLD_LIBS=$LIBS
+    LIBS="$LIBS $MYSQL_LIBS"
     AC_CHECK_LIB([ndbclient],[ndb_init],,[AC_ERROR(["Can't find NdbApi client lib"])]) 
     LIBS=$OLD_LIBS
-    LDFLAGS=$OLD_LDFLAGS
+    LIBS=$OLD_LIBS
     AC_LANG_POP()
 
     # add the ndbapi specific static libs
