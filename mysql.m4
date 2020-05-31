@@ -32,7 +32,7 @@ AC_DEFUN([WITH_MYSQL], [
       if test -x $withval -a -f $withval
       then
         MYSQL_CONFIG=$withval
-        MYSQL_PREFIX=`dirname \`dirname $withval\``
+        MYSQL_PREFIX=$(dirname $(dirname $withval))
       elif test -x $withval/bin/mysql_config -a -f $withval/bin/mysql_config
       then 
         MYSQL_CONFIG=$withval/bin/mysql_config
@@ -49,19 +49,19 @@ AC_DEFUN([WITH_MYSQL], [
     if test "x$MYSQL_SRCDIR" != "x"
     then
       MYSQL_CONFIG="no"
-    elif MYSQL_CONFIG=`which mysql_config` 
+    elif MYSQL_CONFIG=$(which mysql_config)
     then      
-      MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
-    elif MYSQL_CONFIG=`which mariadb_config` 
+      MYSQL_PREFIX=$(dirname $(dirname $MYSQL_CONFIG))
+    elif MYSQL_CONFIG=$(which mariadb_config)
     then      
-      MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
+      MYSQL_PREFIX=$(dirname $(dirname $MYSQL_CONFIG))
     elif test -x /usr/local/mysql/bin/mysql_config -a -f /usr/local/mysql/bin/mysql_config 
     then
       MYSQL_CONFIG=/usr/local/mysql/bin/mysql_config
       MYSQL_PREFIX=/usr/local/mysql
-    elif MYSQL_CONFIG=`which mariadb_config` 
+    elif MYSQL_CONFIG=$(which mariadb_config)
     then      
-      MYSQL_PREFIX=`dirname \`dirname $MYSQL_CONFIG\``
+      MYSQL_PREFIX=$(dirname $(dirname $MYSQL_CONFIG))
     elif test -x /usr/local/mysql/bin/mariadb_config -a -f /usr/local/mysql/bin/mariadb_config 
     then
       MYSQL_CONFIG=/usr/local/mysql/bin/mariadb_config
@@ -83,12 +83,12 @@ AC_DEFUN([WITH_MYSQL], [
       AC_MSG_ERROR("--with-mysql can't be used together with --with-mysql-src")
     else
       # get installed version
-      MYSQL_VERSION=`$MYSQL_CONFIG --version`
+      MYSQL_VERSION=$($MYSQL_CONFIG --version)
 
-      MYSQL_CONFIG_INCLUDE=`$MYSQL_CONFIG --include`
-      MYSQL_CONFIG_LIBS_R=`$MYSQL_CONFIG --libs_r`
+      MYSQL_CONFIG_INCLUDE=$($MYSQL_CONFIG --include)
+      MYSQL_CONFIG_LIBS_R=$($MYSQL_CONFIG --libs_r)
 
-      MYSQL_CLIENT=`dirname $MYSQL_CONFIG`/mysql
+      MYSQL_CLIENT=$(dirname $MYSQL_CONFIG)/mysql
 
       AC_MSG_RESULT($MYSQL_CONFIG)
     fi
@@ -120,7 +120,7 @@ AC_DEFUN([WITH_MYSQL_SRC], [
         then
             AC_MSG_RESULT(ok)
             MYSQL_SRCDIR=$withval
-            MYSQL_VERSION=`grep MYSQL_SERVER_VERSION $MYSQL_SRCDIR/include/mysql_version.h | sed -e's/"$//g' -e's/.*"//g'`
+            MYSQL_VERSION=$(grep MYSQL_SERVER_VERSION $MYSQL_SRCDIR/include/mysql_version.h | sed -e's/"$//g' -e's/.*"//g')
         else
             AC_MSG_ERROR([not configured yet])
         fi
@@ -262,7 +262,7 @@ AC_DEFUN([MYSQL_USE_CLIENT_API], [
 
   # add linker flags for client lib
   AC_ARG_ENABLE([embedded-mysql], [  --enable-embedded-mysql enable the MySQL embedded server feature], 
-    [MYSQL_LDFLAGS="$MYSQL_LDFLAGS "`$MYSQL_CONFIG --libmysqld-libs`],
+    [MYSQL_LDFLAGS="$MYSQL_LDFLAGS "$($MYSQL_CONFIG --libmysqld-libs)],
     [MYSQL_LDFLAGS="$MYSQL_LDFLAGS $MYSQL_CONFIG_LIBS_R"])
 ])
 
@@ -366,12 +366,12 @@ AC_DEFUN([MYSQL_USE_PLUGIN_API], [
   # is <mysql/plugin.h>, not <plugin.h>, so we have to
   # strip thetrailing /mysql from the include paht 
   # reported by mysql_config
-  ADDFLAGS=`echo $MYSQL_CONFIG_INCLUDE | sed -e"s/\/mysql\$//g"` 
+  ADDFLAGS=$(echo $MYSQL_CONFIG_INCLUDE | sed -e"s/\/mysql\$//g")
 
   MYSQL_CFLAGS="$MYSQL_CFLAGS $ADDFLAGS -DMYSQL_DYNAMIC_PLUGIN"    
   MYSQL_CXXFLAGS="$MYSQL_CXXFLAGS $ADDFLAGS"    
 
-  MYSQL_PLUGIN_DIR=`$MYSQL_CLIENT -BNe "show variables like 'plugin_dir'" | sed -e "s/^plugin_dir\t//g"`
+  MYSQL_PLUGIN_DIR=$($MYSQL_CLIENT -BNe "show variables like 'plugin_dir'" | sed -e "s/^plugin_dir\t//g")
 ])
 
 
