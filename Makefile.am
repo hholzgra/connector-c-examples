@@ -47,6 +47,7 @@ bin_PROGRAMS += mysql_set_local_infile_handler
 bin_PROGRAMS += mysql_set_server_option
 bin_PROGRAMS += mysql_shutdown
 bin_PROGRAMS += mysql_sqlstate
+bin_PROGRAMS += mysql_ssl_set
 bin_PROGRAMS += mysql_stat
 bin_PROGRAMS += mysql_stmt_bind_result
 bin_PROGRAMS += mysql_stmt_close
