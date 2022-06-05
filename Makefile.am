@@ -59,3 +59,7 @@ bin_PROGRAMS += mysql_stmt_prepare
 bin_PROGRAMS += mysql_store_result
 bin_PROGRAMS += mysql_thread_id
 bin_PROGRAMS += mysql_use_result
+if HAVE_MARIADB_GET_INFOV
+bin_PROGRAMS += mariadb_get_infov
+endif HAVE_MARIADB_GET_INFOV
+
