@@ -31,7 +31,8 @@
 int main(int argc, char **argv) 
 {
   MYSQL *mysql = NULL;
-  const char *library, *version;
+  const char *library;
+  const char *version;
   unsigned int version_id;
   
   if (mysql_library_init(argc, argv, NULL)) {
@@ -52,6 +53,11 @@ int main(int argc, char **argv)
      actual error handling happens in mysql_real_connect() later */
   mysql_ssl_set(mysql, "./ssl/client-key.pem", "./ssl/client-cert.pem", "./ssl/ca-cert.pem", NULL, NULL);
   
+#ifdef HAVE_MARIADB_GET_INFOV
+  mariadb_get_infov(mysql, MARIADB_TLS_LIBRARY, (void *)&library);
+  printf("SSL client library: %s\n", library);
+#endif /* HAVE_MARIADB_GET_INFOV */
+
   if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
 			  NULL,         /* server hostname or IP address */ 
 			  NULL,         /* mysql user */
@@ -64,20 +70,16 @@ int main(int argc, char **argv)
     puts("Connect failed\n");
   } else {
     puts("Connect OK\n");
+
+#ifdef HAVE_MARIADB_GET_INFOV
+    mariadb_get_infov(mysql, MARIADB_CONNECTION_TLS_VERSION, (void *)&version);
+    printf("SSL version: %s\n", version);
+
+    mariadb_get_infov(mysql, MARIADB_CONNECTION_TLS_VERSION_ID, (void *)&version_id);
+    printf("SSL version ID: %d\n", version_id);
+#endif /* HAVE_MARIADB_GET_INFOV */
   }
 
-  /* print client library name and the TLS version that client and server
-     agreed upon to verify that TLS is really being used */
-  mariadb_get_infov(mysql, MARIADB_TLS_LIBRARY, (void *)&library);
-  printf("SSL client library: %s\n", library);
-
-  mariadb_get_infov(mysql, MARIADB_CONNECTION_TLS_VERSION, (void *)&version);
-  printf("SSL version: %s\n", version);
-
-  mariadb_get_infov(mysql, MARIADB_CONNECTION_TLS_VERSION_ID, (void *)&version_id);
-  printf("SSL version ID: %d\n", version_id);
-
-  
   mysql_close(mysql);
 
   mysql_library_end();
