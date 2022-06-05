@@ -155,7 +155,7 @@ AC_DEFUN([MYSQL_SUBST], [
   AC_SUBST([MYSQL_CFLAGS])
   AC_SUBST([MYSQL_CXXFLAGS])
   AC_SUBST([MYSQL_LIBS])
-  AC_SUBST([MYSQL_LIBS])
+  AC_SUBST([MYSQL_LIBS]) # why twice?
   AC_SUBST([MYSQL_VERSION])
   AC_SUBST([MYSQL_PLUGIN_DIR])
 ])
@@ -263,7 +263,17 @@ AC_DEFUN([MYSQL_USE_CLIENT_API], [
   AC_ARG_ENABLE([embedded-mysql], [  --enable-embedded-mysql enable the MySQL embedded server feature], 
     [MYSQL_LIBS="$MYSQL_LIBS "$($MYSQL_CONFIG --libmysqld-libs)],
     [MYSQL_LIBS="$MYSQL_LIBS $MYSQL_CONFIG_LIBS_R"])
-])
+
+  # check for API function presence
+  # TODO: find a better place for this
+  # TODO: create a macro for this to simplify the AM_CONDITIONAL part
+  LIBS=$MYSQL_LIBS
+  AC_CHECK_FUNCS(mariadb_get_infov,
+	[AM_CONDITIONAL([HAVE_MARIADB_GET_INFOV], [true])],
+	[AM_CONDITIONAL([HAVE_MARIADB_GET_INFOV], [false])]
+	)
+
+  ])
 
 
 
