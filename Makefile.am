@@ -8,7 +8,6 @@ bin_PROGRAMS =
 bin_PROGRAMS += mysql_change_user
 bin_PROGRAMS += mysql_character_set_name
 bin_PROGRAMS += mysql_close
-bin_PROGRAMS += mysql_create_db
 bin_PROGRAMS += mysql_dump_debug_info
 bin_PROGRAMS += mysql_data_seek
 bin_PROGRAMS += mysql_errno
@@ -59,7 +58,12 @@ bin_PROGRAMS += mysql_stmt_prepare
 bin_PROGRAMS += mysql_store_result
 bin_PROGRAMS += mysql_thread_id
 bin_PROGRAMS += mysql_use_result
+
+# TODO deprecated, removinde since when?
+if HAVE_MYSQL_CREATE_DB
+bin_PROGRAMS += mysql_create_db
+endif
+
 if HAVE_MARIADB_GET_INFOV
 bin_PROGRAMS += mariadb_get_infov
 endif HAVE_MARIADB_GET_INFOV
-

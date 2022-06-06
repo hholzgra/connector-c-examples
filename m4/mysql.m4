@@ -279,6 +279,10 @@ AC_DEFUN([MYSQL_USE_CLIENT_API], [
   # check for client API function presence
   LIBS=$MYSQL_LIBS # required for link checks
 
+  # deprecated and eventually removed
+  AC_MSG_NOTICE([Checking for presence of deprecated functions])
+  MYSQL_CHECK_FUNC(mysql_create_db)
+
   # only in MariaDB
   AC_MSG_NOTICE([Checking for presence of MariaDB specific functions])
   MYSQL_CHECK_FUNC(mariadb_get_infov)
