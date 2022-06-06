@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
+/* Copyright (C) 2005 - 2022 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,11 +12,13 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA 
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /*
  * MySQL C client API example: mysql_dump_debug_info()
+ *
+ * NOTE: this examples requires a db user with SUPER privilege
  *
  * see also http://mysql.com/mysql_dump_debug_info
  */
@@ -29,44 +31,19 @@
 
 #include <mysql.h>
 
-int main(int argc, char **argv) 
+#include "helpers.h"
+
+int main(int argc, char **argv)
 {
-  MYSQL *mysql = NULL;
+  MYSQL *mysql = helper_connect(argc, argv); /* see helper.h for actual code */
 
-  if (mysql_library_init(argc, argv, NULL)) {
-    fprintf(stderr, "could not initialize MySQL client library\n");
-    exit(1);
-  }
- 
-  mysql = mysql_init(mysql);
-
-  if (!mysql) {
-    puts("Init faild, out of memory?");
-    return EXIT_FAILURE;
-  }
-        
-  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
-
-  if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
-			  NULL,         /* server hostname or IP address */ 
-			  NULL,         /* mysql user */
-			  NULL,          /* password */
-			  NULL,               /* default database to use, NULL for none */
-			  0,           /* port number, 0 for default */
-			  NULL,        /* socket file or named pipe name */
-			  CLIENT_FOUND_ROWS /* connection flags */ )) {
-    puts("Connect failed\n");
+  if (mysql_dump_debug_info(mysql)) {
+    printf("Debug dump error: %s\n", mysql_error(mysql));
   } else {
-    if (mysql_dump_debug_info(mysql)) {
-      printf("Debug dump error: %s\n", mysql_error(mysql));
-    } else {
-      puts("Debug Dump OK, check server error log for output\n");
-    }
+    puts("Debug Dump OK, check server error log for output\n");
   }
-        
-  mysql_close(mysql);
 
-  mysql_library_end();
-  
+  helper_end(mysql); /* see helper.h for actual code */
+
   return EXIT_SUCCESS;
 }

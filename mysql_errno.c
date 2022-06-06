@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
+/* Copyright (C) 2005 - 2022 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -32,41 +32,19 @@
 
 #include <mysql.h>
 
+#include "helpers.h"
+
 int main(int argc, char **argv) 
 {
-  MYSQL *mysql = NULL;
-  MYSQL *con;
+  MYSQL *mysql = helper_connect(argc, argv); /* see helper.h for actual code */
 
-  if (mysql_library_init(argc, argv, NULL)) {
-    fprintf(stderr, "could not initialize MySQL client library\n");
-    exit(1);
-  }
- 
-  mysql = mysql_init(mysql);
-
-  if (!mysql) {
-    puts("Init faild, out of memory?");
-    return EXIT_FAILURE;
-  }
+  mysql_query(mysql, "this is not valid SQL");
   
-  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
-
-  con = mysql_real_connect(mysql,            /* MYSQL structure to use */
-                           "nosuchhost",     /* server hostname or IP address */ 
-                           "nosuchuser",     /* mysql user */
-                           "",               /* password */
-                           "nosuchdb",       /* default database to use */
-                           0,                /* port number, 0 for default */
-                           NULL,             /* socket file or named pipe name */
-                           CLIENT_FOUND_ROWS /* connection flags */ ); 
-
-  printf("MySQL errno for failed connect: %u \n", mysql_errno(mysql));
-  /* the error information is not reset by mysql_errno() */
-  printf("MySQL errno for failed connect: %u \n", mysql_errno(mysql));
+  printf("MySQL errno: %u \n", mysql_errno(mysql));
+  /* the error information is not reset by calls to mysql_errno() */
+  printf("MySQL errno: %u \n", mysql_errno(mysql));
   
-  mysql_close(mysql);
+  helper_end(mysql); /* see helper.h for actual code */
 
-  mysql_library_end();
-  
   return EXIT_SUCCESS;
 }

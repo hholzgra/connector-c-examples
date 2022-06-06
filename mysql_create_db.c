@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
+/* Copyright (C) 2005 - 2022 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,6 +18,8 @@
 /*
  * MySQL C client API example: mysql_create_db()
  *
+ * WARNING: this function is no longer present in current releases
+ *
  * see also http://mysql.com/mysql_create_db
  */
 
@@ -28,47 +30,23 @@
 
 #include <mysql.h>
 
+#include "helpers.h"
+
 int
 main (int argc, char **argv)
 {
-  MYSQL *mysql = NULL;
+  MYSQL *mysql = helper_connect(argc, argv); /* see helper.h for actual code */
+  int stat;
 
-  if (mysql_library_init(argc, argv, NULL)) {
-    fprintf(stderr, "could not initialize MySQL client library\n");
-    exit(1);
+  stat = mysql_create_db(mysql, "create_db_test");
+
+  if (stat) {
+    fprintf(stderr, "mysql_create_db failed: %s \n", mysql_error(mysql));
+  } else {
+    printf("OK\n");
   }
- 
-  mysql = mysql_init (mysql);
-
-  if (!mysql)
-    {
-      puts ("Init faild, out of memory?");
-      return EXIT_FAILURE;
-    }
-
-  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
-
-  if (!mysql_real_connect (mysql,      /* MYSQL structure to use */
-                           NULL, /* server hostname or IP address */ 
-                           NULL, /* mysql user */
-                           NULL,  /* password */
-                           NULL,       /* default database to use, NULL for none */
-                           0,          /* port number, 0 for default */
-                           NULL,       /* socket file or named pipe name */
-                           CLIENT_FOUND_ROWS /* connection flags */ ))
-    {
-      puts ("Connect failed\n");
-    }
-  else
-    {
-      puts ("Connect OK\n");
-    }
-
-  /* TODO example code missing */
-
-  mysql_close (mysql);
-
-  mysql_library_end();
+  
+  helper_end(mysql); /* see helper.h for actual code */
   
   return EXIT_SUCCESS;
 }

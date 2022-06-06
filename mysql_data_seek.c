@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
+/* Copyright (C) 2005 - 2022 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA 
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /*
@@ -29,69 +29,45 @@
 
 #include <mysql.h>
 
-int main(int argc, char **argv) 
+#include "helpers.h"
+
+int main(int argc, char **argv)
 {
-  MYSQL *mysql = NULL;
+  MYSQL *mysql = helper_connect(argc, argv); /* see helper.h for actual code */
 
-  if (mysql_library_init(argc, argv, NULL)) {
-    fprintf(stderr, "could not initialize MySQL client library\n");
-    exit(1);
-  }
- 
-  mysql = mysql_init(mysql);
+  if (mysql_query(mysql, "SELECT user,host FROM mysql.user")) {
+    printf("Query failed: %s\n", mysql_error(mysql));
+  } else {
+    MYSQL_RES *result = mysql_store_result(mysql);
 
-  if (!mysql) {
-    puts("Init faild, out of memory?");
-    return EXIT_FAILURE;
-  }
-        
-  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
+    if (result) {
+      MYSQL_ROW row;
+      int rownum = 3, i;
+      unsigned int num_fields = mysql_num_fields(result);
 
-  if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
-			  NULL,  /* server hostname or IP address */ 
-			  NULL,  /* mysql user */
-			  NULL,   /* password */
-			  NULL,    /* default database to use, NULL for none */
-			  0,           /* port number, 0 for default */
-			  NULL,        /* socket file or named pipe name */
-			  CLIENT_FOUND_ROWS /* connection flags */ )) {
-    puts("Connect failed\n");
-  } else {                
-    if (mysql_query(mysql, "SELECT * FROM world.Country")) {
-      printf("Query failed: %s\n", mysql_error(mysql));
-    } else {
-      MYSQL_RES *result = mysql_store_result(mysql);
+      printf("Got a valid result set, looking for result row #%d\n", rownum);
 
-      if (result) {
-	MYSQL_ROW row;
-	int i;
-	unsigned int num_fields = mysql_num_fields(result);
-                                                                
-	puts("Got a valid result set, looking for 3rd result row\n");
+      mysql_data_seek(result, rownum);
 
-	mysql_data_seek(result, 3);
-                          
-	row = mysql_fetch_row(result);
-                                
-	if (row) {
-	  for (i = 0; i < num_fields; i++) {
-	    printf("%s, ", row[i]);
-	  }
-	  putchar('\n');
-                                        
-	  mysql_free_result(result);
-	} else {
-	  puts("result has less than 3 rows");
+      row = mysql_fetch_row(result);
+
+      if (row) {
+	printf("  ROW: ");
+	for (i = 0; i < num_fields; i++) {
+	  printf("%s, ", row[i]);
 	}
+	putchar('\n');
+
+	mysql_free_result(result);
       } else {
-	printf("Couldn't get results set: %s\n", mysql_error(mysql));
+	puts("result has less than 3 rows");
       }
+    } else {
+      printf("Couldn't get results set: %s\n", mysql_error(mysql));
     }
   }
-        
-  mysql_close(mysql);
 
-  mysql_library_end();
-  
+  helper_end(mysql); /* see helper.h for actual code */
+
   return EXIT_SUCCESS;
 }

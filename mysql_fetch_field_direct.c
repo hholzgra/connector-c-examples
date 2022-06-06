@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
+/* Copyright (C) 2005 - 2022 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA 
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /*
@@ -28,85 +28,60 @@
 
 #include <mysql.h>
 
-int main(int argc, char **argv) 
+#include "helpers.h"
+
+int main(int argc, char **argv)
 {
-  MYSQL *mysql = NULL;
+  MYSQL *mysql = helper_connect(argc, argv); /* see helper.h for actual code */
 
-  if (mysql_library_init(argc, argv, NULL)) {
-    fprintf(stderr, "could not initialize MySQL client library\n");
-    exit(1);
-  }
- 
-  mysql = mysql_init(mysql);
+  if (mysql_query(mysql, "SELECT * FROM mysql.help_keyword LIMIT 1")) {
+    printf("Query failed: %s\n", mysql_error(mysql));
+  } else {
+    MYSQL_RES *result = mysql_store_result(mysql);
 
-  if (!mysql) {
-    puts("Init faild, out of memory?");
-    return EXIT_FAILURE;
-  }
-        
-  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
-
-  if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
-                          NULL,  /* server hostname or IP address */ 
-                          NULL,  /* mysql user */
-                          NULL,   /* password */
-                          NULL,    /* default database to use, NULL for none */
-                          0,           /* port number, 0 for default */
-                          NULL,        /* socket file or named pipe name */
-                          CLIENT_FOUND_ROWS /* connection flags */ )) {
-    puts("Connect failed\n");
-  } else {              
-    if (mysql_query(mysql, "SELECT * FROM City LIMIT 10")) {
-      printf("Query failed: %s\n", mysql_error(mysql));
+    if (!result) {
+      printf("Couldn't get results set: %s\n", mysql_error(mysql));
     } else {
-      MYSQL_RES *result = mysql_store_result(mysql);
+      unsigned int i, num_fields = mysql_num_fields(result);
 
-      if (!result) {
-        printf("Couldn't get results set: %s\n", mysql_error(mysql));
-      } else {
-        unsigned int i, num_fields = mysql_num_fields(result);
+      for (i = 0; i < num_fields; i++) {
+	MYSQL_FIELD *field = mysql_fetch_field_direct(result, i);
 
-        for (i = 0; i < num_fields; i++) {
-          MYSQL_FIELD *field = mysql_fetch_field_direct(result, i);
+	if (!field) {
+	  printf("Faild fetching field #%u: %s\n", i, mysql_error(mysql));
+	  break;
+	}
 
-          if (!field) {
-            printf("Faild fetching field #%u: %s\n", i, mysql_error(mysql));
-            break;
-          } 
-        
-          printf("FIELD #%d\n", i);
-          printf("  %-20s %s\n", "Field name", field->name);
+	printf("FIELD #%d\n", i);
+	printf("  %-20s %s\n", "Field name", field->name);
 #if MYSQL_VERSION_ID >= 40100
-          printf("  %-20s %s\n", "Original name", field->org_name);
+	printf("  %-20s %s\n", "Original name", field->org_name);
 #endif
-          printf("  %-20s %s\n", "From table", field->table);
-          printf("  %-20s %s\n", "Original name", field->org_table);
-          printf("  %-20s %s\n", "Database", field->db);
+	printf("  %-20s %s\n", "From table", field->table);
+	printf("  %-20s %s\n", "Original name", field->org_table);
+	printf("  %-20s %s\n", "Database", field->db);
 #if MYSQL_VERSION_ID >= 40100
-          printf("  %-20s %s\n", "Catalog", field->catalog);
+	printf("  %-20s %s\n", "Catalog", field->catalog);
 #endif
-          printf("  %-20s %s\n", "Default", field->def);
-          printf("  %-20s %lu\n", "CREATE field length", field->length);
-          printf("  %-20s %lu\n", "MAX field lengt", field->max_length);
+	printf("  %-20s %s\n", "Default", field->def);
+	printf("  %-20s %lu\n", "CREATE field length", field->length);
+	printf("  %-20s %lu\n", "MAX field lengt", field->max_length);
 #if MYSQL_VERSION_ID >= 40100
-          printf("  %-20s %u\n", "Field name length", field->name_length);
-          printf("  %-20s %u\n", "Original name length", field->org_name_length);
-          printf("  %-20s %u\n", "Table name length", field->table_length);
-          printf("  %-20s %u\n", "Original name length", field->org_table_length);
-          printf("  %-20s %u\n", "DB name length", field->db_length);
-          printf("  %-20s %u\n", "Catalog name length", field->catalog_length);
-          printf("  %-20s %u\n", "Default length", field->def_length);
+	printf("  %-20s %u\n", "Field name length", field->name_length);
+	printf("  %-20s %u\n", "Original name length", field->org_name_length);
+	printf("  %-20s %u\n", "Table name length", field->table_length);
+	printf("  %-20s %u\n", "Original name length", field->org_table_length);
+	printf("  %-20s %u\n", "DB name length", field->db_length);
+	printf("  %-20s %u\n", "Catalog name length", field->catalog_length);
+	printf("  %-20s %u\n", "Default length", field->def_length);
 #endif
-          /* TODO: flags, decimals, charset, field type */
-          printf("\n");
-        }
+	/* TODO: flags, decimals, charset, field type */
+	printf("\n");
       }
     }
   }
-        
-  mysql_close(mysql);
 
-  mysql_library_end();
-  
+  helper_end(mysql); /* see helper.h for actual code */
+
   return EXIT_SUCCESS;
 }
