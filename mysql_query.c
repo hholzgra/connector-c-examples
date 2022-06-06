@@ -29,6 +29,8 @@
 
 #include <mysql.h>
 
+#include "helpers.h"
+
 static char *server_groups[] = {
   "embedded",
   "server",
