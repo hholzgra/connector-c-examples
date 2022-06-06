@@ -246,7 +246,19 @@ AC_DEFUN([MYSQL_DEBUG_SERVER], [
   # 
 ])
 
-
+dnl check if function exists, if yes then define
+dnl HAVE_FUNCTION_NAME for both config.h.in and Makefile.am use
+dnl
+dnl MYSQL_CHECK_FUNC(function_name)
+dnl
+AC_DEFUN([MYSQL_CHECK_FUNC], [
+  define([define_name], [HAVE_])
+  m4_append([define_name], m4_toupper($1))
+  AC_CHECK_FUNCS([$1],
+    [AM_CONDITIONAL(define_name, [true])],
+    [AM_CONDITIONAL(define_name, [false])]
+    )
+])
 
 dnl set up variables for compilation of regular C API applications
 dnl 
@@ -264,17 +276,13 @@ AC_DEFUN([MYSQL_USE_CLIENT_API], [
     [MYSQL_LIBS="$MYSQL_LIBS "$($MYSQL_CONFIG --libmysqld-libs)],
     [MYSQL_LIBS="$MYSQL_LIBS $MYSQL_CONFIG_LIBS_R"])
 
-  # check for API function presence
-  # TODO: find a better place for this
-  # TODO: create a macro for this to simplify the AM_CONDITIONAL part
-  LIBS=$MYSQL_LIBS
-  AC_CHECK_FUNCS(mariadb_get_infov,
-	[AM_CONDITIONAL([HAVE_MARIADB_GET_INFOV], [true])],
-	[AM_CONDITIONAL([HAVE_MARIADB_GET_INFOV], [false])]
-	)
+  # check for client API function presence
+  LIBS=$MYSQL_LIBS # required for link checks
 
-  ])
-
+  # only in MariaDB
+  AC_MSG_NOTICE([Checking for presence of MariaDB specific functions])
+  MYSQL_CHECK_FUNC(mariadb_get_infov)
+])
 
 
 
