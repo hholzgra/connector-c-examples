@@ -1,0 +1,6 @@
+* fix mysql_query example, that one should not use prepared statement API
+* add missing functions
+* move connect logic to a convenience function or macro so that actual example code stans out more clearly?
+* mysql_change_user -> how to make 2nd user configurable?
+
+
