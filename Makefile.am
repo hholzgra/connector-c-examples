@@ -24,7 +24,6 @@ bin_PROGRAMS += mysql_get_client_version
 bin_PROGRAMS += mysql_get_host_info
 bin_PROGRAMS += mysql_get_proto_info
 bin_PROGRAMS += mysql_get_server_info
-bin_PROGRAMS += mysql_get_server_version
 bin_PROGRAMS += mysql_hex_string
 bin_PROGRAMS += mysql_info
 bin_PROGRAMS += mysql_init
@@ -58,6 +57,11 @@ bin_PROGRAMS += mysql_stmt_prepare
 bin_PROGRAMS += mysql_store_result
 bin_PROGRAMS += mysql_thread_id
 bin_PROGRAMS += mysql_use_result
+
+# added in MySQL 4.1
+if HAVE_MYSQL_GET_SERVER_VERSION
+bin_PROGRAMS += mysql_get_server_version
+endif
 
 # TODO deprecated, removinde since when?
 if HAVE_MYSQL_CREATE_DB

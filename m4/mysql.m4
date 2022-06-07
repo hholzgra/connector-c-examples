@@ -283,6 +283,10 @@ AC_DEFUN([MYSQL_USE_CLIENT_API], [
   AC_MSG_NOTICE([Checking for presence of deprecated functions])
   MYSQL_CHECK_FUNC(mysql_create_db)
 
+  # added in later releases only
+  AC_MSG_NOTICE([Checking for presence of new functions])
+  MYSQL_CHECK_FUNC(mysql_get_server_version) # added in MySQL 4.1
+
   # only in MariaDB
   AC_MSG_NOTICE([Checking for presence of MariaDB specific functions])
   MYSQL_CHECK_FUNC(mariadb_get_infov)

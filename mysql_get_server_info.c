@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
+/* Copyright (C) 2005 - 2022 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,41 +28,15 @@
 
 #include <mysql.h>
 
+#include "helpers.h"
+
 int main(int argc, char **argv) 
 {
-  MYSQL *mysql = NULL;
+  MYSQL *mysql = helper_connect(argc, argv); /* see helper.h for actual code */
 
-  if (mysql_library_init(argc, argv, NULL)) {
-    fprintf(stderr, "could not initialize MySQL client library\n");
-    exit(1);
-  }
- 
-  mysql = mysql_init(mysql);
-
-  if (!mysql) {
-    puts("Init faild, out of memory?");
-    return EXIT_FAILURE;
-  }
+  printf("MySQL Server Info: %s\n", mysql_get_server_info(mysql));
         
-  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
+  helper_end(mysql); /* see helper.h for actual code */
 
-  if (!mysql_real_connect(mysql,       /* MYSQL structure to use */
-			  NULL,  /* server hostname or IP address */ 
-			  NULL,  /* mysql user */
-			  NULL,   /* password */
-			  NULL,        /* default database to use, NULL for none */
-			  0,           /* port number, 0 for default */
-			  NULL,        /* socket file or named pipe name */
-			  CLIENT_FOUND_ROWS /* connection flags */ )) {
-    puts("Connect failed\n");
-  } else {
-    printf("MySQL Server Info: %s\n", mysql_get_server_info(mysql));
-  }
-
-        
-  mysql_close(mysql);
-
-  mysql_library_end();
-  
   return EXIT_SUCCESS;
 }
