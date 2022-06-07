@@ -1,4 +1,4 @@
-/* Copyright (C) 2005 - 2019 Hartmut Holzgraefe <hartmut@php.net>
+/* Copyright (C) 2005 - 2022 Hartmut Holzgraefe <hartmut@php.net>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,13 +12,13 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA 
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /*
- * MySQL C client API example: mysql_sqlstate()
+ * MySQL C client API example: mysql_error()
  *
- * see also http://mysql.com/mysql_sqlstate
+ * see also http://mysql.com/mysql_error
  */
 
 #include "config.h"
@@ -28,38 +28,19 @@
 
 #include <mysql.h>
 
-int main(int argc, char **argv) 
+#include "helpers.h"
+
+int main(int argc, char **argv)
 {
-  MYSQL *mysql = NULL, *con;
+  MYSQL *mysql = helper_connect(argc, argv); /* see helper.h for actual code */
 
-  if (mysql_library_init(argc, argv, NULL)) {
-    fprintf(stderr, "could not initialize MySQL client library\n");
-    exit(1);
-  }
- 
-  mysql = mysql_init(mysql);
+  mysql_query(mysql, "this is not valid SQL");
 
-  if (!mysql) {
-    puts("Init faild, out of memory?");
-    return EXIT_FAILURE;
-  }
-        
-  mysql_options(mysql, MYSQL_READ_DEFAULT_FILE, (void *)"./my.cnf");
+  printf("MySQL error (expected): %s\n", mysql_sqlstate(mysql));
+   /* the error information is not reset by calls to mysql_sqlstate() */
+  printf("MySQL error (expected): %s\n", mysql_sqlstate(mysql));
 
-  con = mysql_real_connect(mysql,       /* MYSQL structure to use */
-			   "nosuchhost", /* server hostname or IP address */ 
-			   "nosuchuser",      /* mysql user */
-			   "",          /* password */
-			   "test",      /* default database to use, NULL for none */
-			   0,           /* port number, 0 for default */
-			   NULL,        /* socket file or named pipe name */
-			   CLIENT_FOUND_ROWS /* connection flags */ ); 
+  helper_end(mysql); /* see helper.h for actual code */
 
-  printf("MySQL sqlstate for failed connect: %s \n", mysql_sqlstate(mysql));
-        
-  mysql_close(mysql);
-
-  mysql_library_end();
-  
   return EXIT_SUCCESS;
 }
