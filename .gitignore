@@ -50,6 +50,7 @@ m4/lt~obsolete.m4
 
 
 # generated binaries
+mariadb_get_infov
 mysql_change_user
 mysql_character_set_name
 mysql_close
@@ -92,6 +93,7 @@ mysql_set_local_infile_handler
 mysql_set_server_option
 mysql_shutdown
 mysql_sqlstate
+mysql_ssl_set
 mysql_stat
 mysql_stmt_bind_result
 mysql_stmt_close
@@ -103,3 +105,6 @@ mysql_stmt_prepare
 mysql_store_result
 mysql_thread_id
 mysql_use_result
+
+# misc files
+my.cnf
