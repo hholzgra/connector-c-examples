@@ -1,0 +1,6 @@
+[client]
+host=10.0.2.15
+user=user
+password=secret
+database=test
+
