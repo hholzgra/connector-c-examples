@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_kill()
+ * MariaDB Connector/C client API example: mysql_kill()
  *
  * see also http://mysql.com/mysql_kill
  */

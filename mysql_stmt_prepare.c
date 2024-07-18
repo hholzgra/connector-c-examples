@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_stmt_prepare()
+ * MariaDB Connector/C client API example: mysql_stmt_prepare()
  *
  * see also http://mysql.com/mysql_stmt_prepare
  */

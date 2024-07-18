@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_fetch_row()
+ * MariaDB Connector/C client API example: mysql_fetch_row()
  *
  * see also http://mysql.com/mysql_fetch_row
  */

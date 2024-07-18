@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_get_server_info()
+ * MariaDB Connector/C client API example: mysql_get_server_info()
  *
  * see also http://mysql.com/mysql_get_server_info
  */

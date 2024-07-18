@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_character_set_name()
+ * MariaDB Connector/C client API example: mysql_character_set_name()
  *
  * see also http://mysql.com/mysql_character_set_name
  */

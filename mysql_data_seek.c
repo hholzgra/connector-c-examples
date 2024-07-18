@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_data_seek()
+ * MariaDB Connector/C client API example: mysql_data_seek()
  *
  * see also http://mysql.com/mysql_data_seek
  */

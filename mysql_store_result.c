@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_store_result()
+ * MariaDB Connector/C client API example: mysql_store_result()
  *
  * see also http://mysql.com/mysql_store_result
  */

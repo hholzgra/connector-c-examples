@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_ping()
+ * MariaDB Connector/C client API example: mysql_ping()
  *
  * see also http://mysql.com/mysql_ping
  */

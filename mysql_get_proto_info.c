@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_get_proto_info()
+ * MariaDB Connector/C client API example: mysql_get_proto_info()
  *
  * see also http://mysql.com/mysql_get_proto_info
  */

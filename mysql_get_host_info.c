@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_get_host_info()
+ * MariaDB Connector/C client API example: mysql_get_host_info()
  *
  * see also http://mysql.com/mysql_get_host_info
  */

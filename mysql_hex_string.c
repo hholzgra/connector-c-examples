@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_hex_string()
+ * MariaDB Connector/C client API example: mysql_hex_string()
  *
  * see also http://mysql.com/mysql_hex_string
  */

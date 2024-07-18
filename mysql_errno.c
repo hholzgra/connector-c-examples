@@ -16,13 +16,13 @@
 */
 
 /*
- * MySQL C client API example: mysql_errno()
+ * MariaDB Connector/C client API example: mysql_errno()
  *
  * see also http://mysql.com/mysql_errno
  */
 
 /*
- * MySQL C client API examples: mysql_errno() 
+ * MariaDB Connector/C client API examples: mysql_errno() 
  */
 
 #include "config.h"

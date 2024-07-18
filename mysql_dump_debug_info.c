@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_dump_debug_info()
+ * MariaDB Connector/C client API example: mysql_dump_debug_info()
  *
  * NOTE: this examples requires a db user with SUPER privilege
  *

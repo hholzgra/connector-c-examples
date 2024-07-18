@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_set_server_option()
+ * MariaDB Connector/C client API example: mysql_set_server_option()
  *
  * see also http://mysql.com/mysql_set_server_option
  */

@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_set_local_infile_handler()
+ * MariaDB Connector/C client API example: mysql_set_local_infile_handler()
  *
  * see also http://mysql.com/mysql_set_local_infile_handler
  */

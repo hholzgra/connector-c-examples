@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_create_db()
+ * MariaDB Connector/C client API example: mysql_create_db()
  *
  * WARNING: this function is no longer present in current releases
  *

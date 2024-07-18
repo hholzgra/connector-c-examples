@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_init()
+ * MariaDB Connector/C client API example: mysql_init()
  *
  * see also http://mysql.com/mysql_init
  */

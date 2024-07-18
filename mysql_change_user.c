@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_change_user()
+ * MariaDB Connector/C client API example: mysql_change_user()
  *
  * see also http://mysql.com/mysql_change_user
  */

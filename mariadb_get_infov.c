@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_real_connect()
+ * MariaDB Connector/C client API example: mysql_real_connect()
  *
  * see also http://mysql.com/mysql_real_connect
  */

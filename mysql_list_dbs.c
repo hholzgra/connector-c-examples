@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_list_dbs()
+ * MariaDB Connector/C client API example: mysql_list_dbs()
  *
  * see also http://mysql.com/mysql_list_dbs
  */

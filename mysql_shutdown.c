@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_shutdown()
+ * MariaDB Connector/C client API example: mysql_shutdown()
  *
  * WARNING: further tests will fail until you restart the database server
  *

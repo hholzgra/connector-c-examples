@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_query()
+ * MariaDB Connector/C client API example: mysql_query()
  *
  * see also http://mysql.com/mysql_query
  */

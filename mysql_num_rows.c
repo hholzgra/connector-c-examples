@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_num_rows()
+ * MariaDB Connector/C client API example: mysql_num_rows()
  *
  * see also http://mysql.com/mysql_num_rows
  */

@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_stmt_bind_result()
+ * MariaDB Connector/C client API example: mysql_stmt_bind_result()
  *
  * see also http://mysql.com/mysql_stmt_bind_result
  */

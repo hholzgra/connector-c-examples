@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_get_client_version()
+ * MariaDB Connector/C client API example: mysql_get_client_version()
  *
  * see also http://mysql.com/mysql_get_client_version
  */

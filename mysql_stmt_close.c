@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_stmt_close()
+ * MariaDB Connector/C client API example: mysql_stmt_close()
  *
  * see also http://mysql.com/mysql_stmt_close
  */

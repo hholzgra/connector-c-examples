@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_use_result()
+ * MariaDB Connector/C client API example: mysql_use_result()
  *
  * see also http://mysql.com/mysql_use_result
  */

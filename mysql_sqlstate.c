@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_error()
+ * MariaDB Connector/C client API example: mysql_error()
  *
  * see also http://mysql.com/mysql_error
  */

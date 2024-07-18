@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_select_db()
+ * MariaDB Connector/C client API example: mysql_select_db()
  *
  * see also http://mysql.com/mysql_select_db
  */

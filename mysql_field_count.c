@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_field_count()
+ * MariaDB Connector/C client API example: mysql_field_count()
  *
  * see also http://mysql.com/mysql_field_count
  */

@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_fetch_lengths()
+ * MariaDB Connector/C client API example: mysql_fetch_lengths()
  *
  * see also http://mysql.com/mysql_fetch_lengths
  */

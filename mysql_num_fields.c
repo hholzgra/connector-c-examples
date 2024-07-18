@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_num_fields()
+ * MariaDB Connector/C client API example: mysql_num_fields()
  *
  * see also http://mysql.com/mysql_num_fields
  */

@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_options()
+ * MariaDB Connector/C client API example: mysql_options()
  *
  * see also http://mysql.com/mysql_options
  */

@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_thread_id()
+ * MariaDB Connector/C client API example: mysql_thread_id()
  *
  * see also http://mysql.com/mysql_thread_id
  */

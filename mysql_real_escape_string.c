@@ -16,7 +16,7 @@
 */
 
 /*
- * MySQL C client API example: mysql_real_escape_string()
+ * MariaDB Connector/C client API example: mysql_real_escape_string()
  *
  * see also http://mysql.com/mysql_real_escape_string
  */
