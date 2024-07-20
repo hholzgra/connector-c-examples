@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_kill()
  *
- * see also http://mysql.com/mysql_kill
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_kill/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_kill
+ * * https://mysql.com/mysql_kill
  */
 
 #include "config.h"

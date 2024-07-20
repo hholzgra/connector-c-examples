@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_character_set_name()
  *
- * see also http://mysql.com/mysql_character_set_name
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_character_set_name/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_character_set_name
+ * * https://mysql.com/mysql_character_set_name
  */
 
 #include "config.h"

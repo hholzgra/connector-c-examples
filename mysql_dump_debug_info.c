@@ -20,7 +20,10 @@
  *
  * NOTE: this examples requires a db user with SUPER privilege
  *
- * see also http://mysql.com/mysql_dump_debug_info
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_dump_debug_info/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_dump_debug_info
+ * * https://mysql.com/mysql_dump_debug_info
  */
 
 #include "config.h"

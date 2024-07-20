@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_get_client_info()
  *
- * see also http://mysql.com/mysql_get_client_info
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_get_client_info/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_get_client_info
+ * * https://mysql.com/mysql_get_client_info
  */
 
 #include "config.h"

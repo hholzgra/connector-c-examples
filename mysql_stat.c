@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_stat()
  *
- * see also http://mysql.com/mysql_stat
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_stat/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_stat
+ * * https://mysql.com/mysql_stat
  */
 
 #include "config.h"

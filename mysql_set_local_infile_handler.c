@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_set_local_infile_handler()
  *
- * see also http://mysql.com/mysql_set_local_infile_handler
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_set_local_infile_handler/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_set_local_infile_handler
+ * * https://mysql.com/mysql_set_local_infile_handler
  */
 
 #include "config.h"

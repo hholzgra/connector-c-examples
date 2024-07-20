@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_list_tables()
  *
- * see also http://mysql.com/mysql_list_tables
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_list_tables/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_list_tables
+ * * https://mysql.com/mysql_list_tables
  */
 
 #include "config.h"

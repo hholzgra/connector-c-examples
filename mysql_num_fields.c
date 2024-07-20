@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_num_fields()
  *
- * see also http://mysql.com/mysql_num_fields
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_num_fields/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_num_fields
+ * * https://mysql.com/mysql_num_fields
  */
 
 #include "config.h"

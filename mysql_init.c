@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_init()
  *
- * see also http://mysql.com/mysql_init
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_init/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_init
+ * * https://mysql.com/mysql_init
  */
 
 #include "config.h"

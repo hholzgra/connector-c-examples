@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_thread_id()
  *
- * see also http://mysql.com/mysql_thread_id
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_thread_id/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_thread_id
+ * * https://mysql.com/mysql_thread_id
  */
 
 #include "config.h"

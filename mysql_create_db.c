@@ -20,7 +20,7 @@
  *
  * WARNING: this function is no longer present in current releases
  *
- * see also http://mysql.com/mysql_create_db
+ * see also https://mysql.com/mysql_create_db
  */
 
 #include "config.h"

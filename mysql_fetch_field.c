@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_fetch_fields()
  *
- * see also http://mysql.com/mysql_fetch_fields
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_fetch_fields/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_fetch_fields
+ * * https://mysql.com/mysql_fetch_fields
  */
 
 #include "config.h"

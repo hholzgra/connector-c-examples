@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_select_db()
  *
- * see also http://mysql.com/mysql_select_db
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_select_db/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_select_db
+ * * https://mysql.com/mysql_select_db
  */
 
 #include "config.h"

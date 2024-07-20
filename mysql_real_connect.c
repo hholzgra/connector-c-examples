@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_real_connect()
  *
- * see also http://mysql.com/mysql_real_connect
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_real_connect/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_real_connect
+ * * https://mysql.com/mysql_real_connect
  */
 
 #include "config.h"

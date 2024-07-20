@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_stmt_execute()
  *
- * see also http://mysql.com/mysql_stmt_execute
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_stmt_execute/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_stmt_execute
+ * * https://mysql.com/mysql_stmt_execute
  */
 
 #include "config.h"

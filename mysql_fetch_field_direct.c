@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_fetch_field_direct()
  *
- * see also http://mysql.com/mysql_fetch_field_direct
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_fetch_field_direct/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_fetch_field_direct
+ * * https://mysql.com/mysql_fetch_field_direct
  */
 
 #include "config.h"

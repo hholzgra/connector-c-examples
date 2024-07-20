@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_options()
  *
- * see also http://mysql.com/mysql_options
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_options/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_options
+ * * https://mysql.com/mysql_options
  */
 
 #include "config.h"

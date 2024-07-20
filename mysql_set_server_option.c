@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_set_server_option()
  *
- * see also http://mysql.com/mysql_set_server_option
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_set_server_option/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_set_server_option
+ * * https://mysql.com/mysql_set_server_option
  */
 
 #include "config.h"

@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_fetch_row()
  *
- * see also http://mysql.com/mysql_fetch_row
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_fetch_row/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_fetch_row
+ * * https://mysql.com/mysql_fetch_row
  */
 
 #include "config.h"

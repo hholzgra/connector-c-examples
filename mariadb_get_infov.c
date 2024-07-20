@@ -16,9 +16,11 @@
 */
 
 /*
- * MariaDB Connector/C client API example: mysql_real_connect()
+ * MariaDB Connector/C client API example: mariadb_get_infov()
  *
- * see also http://mysql.com/mysql_real_connect
+ * see also:
+ *  * https://mariadb.com/kb/en/mariadb_get_infov/
+ *  * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mariadb_get_infov
  */
 
 #include "config.h"

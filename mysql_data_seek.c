@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_data_seek()
  *
- * see also http://mysql.com/mysql_data_seek
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_data_seek/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_data_seek
+ * * https://mysql.com/mysql_data_seek
  */
 
 /* comment: why no return value? */

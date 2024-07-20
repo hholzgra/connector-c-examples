@@ -18,11 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_errno()
  *
- * see also http://mysql.com/mysql_errno
- */
-
-/*
- * MariaDB Connector/C client API examples: mysql_errno() 
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_errno/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_errno
+ * * https://mysql.com/mysql_errno
  */
 
 #include "config.h"

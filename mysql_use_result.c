@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_use_result()
  *
- * see also http://mysql.com/mysql_use_result
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_use_result/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_use_result
+ * * https://mysql.com/mysql_use_result
  */
 
 #include "config.h"

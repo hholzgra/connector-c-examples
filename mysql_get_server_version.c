@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_get_server_version()
  *
- * see also http://mysql.com/mysql_get_server_version
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_get_server_version/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_get_server_version
+ * * https://mysql.com/mysql_get_server_version
  */
 
 #include "config.h"

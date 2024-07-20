@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_stmt_prepare()
  *
- * see also http://mysql.com/mysql_stmt_prepare
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_stmt_prepare/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_stmt_prepare
+ * * https://mysql.com/mysql_stmt_prepare
  */
 
 #include "config.h"

@@ -16,9 +16,12 @@
 */
 
 /*
- * MariaDB Connector/C client API example: mysql_error()
+ * MariaDB Connector/C client API example: mysql_sqlstate()
  *
- * see also http://mysql.com/mysql_error
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_sqlstate/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_sqlstate
+ * * https://mysql.com/mysql_sqlstate
  */
 
 #include "config.h"

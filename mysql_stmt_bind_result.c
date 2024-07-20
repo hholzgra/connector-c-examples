@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_stmt_bind_result()
  *
- * see also http://mysql.com/mysql_stmt_bind_result
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_stmt_bind_result/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_stmt_bind_result
+ * * https://mysql.com/mysql_stmt_bind_result
  */
 
 #include "config.h"

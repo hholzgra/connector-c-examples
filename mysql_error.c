@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_error()
  *
- * see also http://mysql.com/mysql_error
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_error/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_error
+ * * https://mysql.com/mysql_error
  */
 
 #include "config.h"

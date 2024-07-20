@@ -22,7 +22,10 @@
  *
  * NOTE: requires db user with SHUTDOWN privilege
  *
- * see also http://mysql.com/mysql_shutdown
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_shutdown/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_shutdown
+ * * https://mysql.com/mysql_shutdown
  */
 
 #include "config.h"

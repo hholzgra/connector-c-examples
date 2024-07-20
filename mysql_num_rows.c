@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_num_rows()
  *
- * see also http://mysql.com/mysql_num_rows
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_num_rows
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_num_rows
+ * * https://mysql.com/mysql_num_rows
  */
 
 #include "config.h"

@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_stmt_close()
  *
- * see also http://mysql.com/mysql_stmt_close
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_stmt_close/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_stmt_close
+ * * https://mysql.com/mysql_stmt_close
  */
 
 #include "config.h"

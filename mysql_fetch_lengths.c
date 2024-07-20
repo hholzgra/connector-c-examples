@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_fetch_lengths()
  *
- * see also http://mysql.com/mysql_fetch_lengths
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_fetch_lengths/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_fetch_lengths
+ * * https://mysql.com/mysql_fetch_lengths
  */
 
 #include "config.h"

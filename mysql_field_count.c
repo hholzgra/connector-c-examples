@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_field_count()
  *
- * see also http://mysql.com/mysql_field_count
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_field_count/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_field_count
+ * * https://mysql.com/mysql_field_count
  */
 
 #include "config.h"

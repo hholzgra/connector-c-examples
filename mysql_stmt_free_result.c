@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_stmt_free_result()
  *
- * see also http://mysql.com/mysql_stmt_free_result
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_stmt_free_result/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_stmt_free_result
+ * * https://mysql.com/mysql_stmt_free_result
  */
 
 #include "config.h"

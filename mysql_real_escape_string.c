@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_real_escape_string()
  *
- * see also http://mysql.com/mysql_real_escape_string
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_real_escape_string/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_real_escape_string
+ * * https://mysql.com/mysql_real_escape_string
  */
 
 #include "config.h"

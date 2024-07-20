@@ -18,7 +18,10 @@
 /*
  * MariaDB Connector/C client API example: mysql_query()
  *
- * see also http://mysql.com/mysql_query
+ * see also:
+ * * https://mariadb.com/kb/en/mysql_query/
+ * * https://github.com/mariadb-corporation/mariadb-connector-c/wiki/mysql_query
+ * * https://mysql.com/mysql_query
  */
 
 #include "config.h"
